@@ -7,9 +7,14 @@
 nav li{
     margin-left: 30px;
 }
+
 .login{
     position: relative;
     float: right;
+}
+.weather{
+    margin:15px;
+    color: red;
 }
 .content{
     height: 1000px;

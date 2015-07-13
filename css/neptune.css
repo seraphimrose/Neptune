@@ -1,0 +1,16 @@
+.logo{
+    height:50px;
+    width:auto;
+    margin-top: 0;
+}
+
+nav li{
+    margin-left: 30px;
+}
+.login{
+    position: relative;
+    float: right;
+}
+.content{
+    height: 1000px;
+}

@@ -7,9 +7,9 @@
  */
 header("Content-Type: text/html;charset=utf-8");
 include "conn.php";
-$name = "测试a";
-$picture = "jpg/8.jpg";
-$desc = "aa就是试试";
+$name = "测试b";
+$picture = "jpg/7.jpg";
+$desc = "a就是试试";
 
 $status = null;
 $insrt = "INSERT INTO menu(id, dishname, picture, flag,description) VALUES (null,'$name','$picture',0,'$desc')";

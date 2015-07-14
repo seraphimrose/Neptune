@@ -42,34 +42,7 @@
         </div>
     </nav>
     <div class="content">
-        <div class="menu_title">
-            <h1 style="text-align: center;">今日菜单</h1><hr/>
-        </div>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <form>
-                    <div class="radio table-bordered menu_items">
-                        <label>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <input type="radio" name="menu" value="option1" class="sr-only">
-                                    <img src="src/青椒肉丝.jpg" class="food_pic"/>
-                                </div>
-                                <div class="col-md-8">
-                                    <h4>青椒肉丝饭</h4><br/>
-                                    <p>青椒肉丝是一道色香味俱全的汉族名菜，属于川菜系。以青椒为主要食材，口味香辣，色香味俱全，营养价值丰富</p>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-primary comment"><span class="glyphicon glyphicon-comment"></span></button>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
+
     </div>
     <div class="footer">
 

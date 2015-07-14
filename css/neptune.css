@@ -15,6 +15,7 @@ nav li{
 .weather{
     margin:15px;
     color: red;
+    word-spacing: 5px;
 }
 .content{
     height: 1000px;

@@ -43,33 +43,36 @@
     </nav>
     <div class="content">
         <div class="menu_title">
-            <h1 style="text-align: center;">今日菜单</h1><hr/>
+            <h1 style="text-align: center;color:red">今日菜单</h1><hr/>
         </div>
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <form>
-                    <div class="radio table-bordered menu_items">
-                        <label>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <input type="radio" name="menu" value="option1" class="sr-only">
-                                    <img src="src/青椒肉丝.jpg" class="food_pic"/>
-                                </div>
-                                <div class="col-md-8">
-                                    <h4>青椒肉丝饭</h4><br/>
-                                    <p>青椒肉丝是一道色香味俱全的汉族名菜，属于川菜系。以青椒为主要食材，口味香辣，色香味俱全，营养价值丰富</p>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-primary comment"><span class="glyphicon glyphicon-comment"></span></button>
-                                </div>
+            <form>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="table-bordered menu_items">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input type="radio" name="menu" value="option1" class="hide"/>
+                                <img src="src/青椒肉丝.jpg" class="food_pic"/>
                             </div>
-                        </label>
+                            <div class="col-md-7">
+                                <h4>青椒肉丝饭</h4><br/>
+                                <p>青椒肉丝是一道色香味俱全的汉族名菜，属于川菜系。以青椒为主要食材，口味香辣，色香味俱全，营养价值丰富</p>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-primary comment"><span class="glyphicon glyphicon-comment"></span></button>
+                            </div>
+                            <div class="col-md-1">
+                                <span class="glyphicon glyphicon-ok hide" style="color:green;margin:10px;"></span>
+                            </div>
+                        </div>
                     </div>
-                </form>
-            </div>
-            <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <button class="btn btn-warning" type="submit" style="position: fixed;margin-top:200px;">就吃这个了！</button>
+                </div>
+            </form>
         </div>
+
     </div>
     <div class="footer">
 

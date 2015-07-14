@@ -14,6 +14,10 @@
 </head>
 
 <?php include 'weather.php' ?>
+<?php
+
+?>
+?>
 
 <body>
 
@@ -85,7 +89,7 @@
                 <h4 class="modal-title">登录</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="lyy-test/login.php">
                     <div class="form-group">
                         <label>账号</label>
                         <input class="form-control" name="id" type="text"/>

@@ -32,7 +32,7 @@
 
                 </ul>
                 <ul class="nav navbar-nav login">
-                    <li><p class="weather"><?php echo $date."  ".$city."  ".$s."  ".$t2." ～ ".$t1." ℃ "; ?></p></li>
+                    <li><p class="weather"><?php echo $date."  ".$city."  ".$s."  ".$t2."~".$t1." ℃ "; ?></p></li>
                     <li><a href="#">登录</a></li>
                 </ul>
             </div>

@@ -1,3 +1,6 @@
+body,html{
+    font-family:'Microsoft YaHei','Hiragino Sans GB',Helvetica,Arial,'Lucida Grande',sans-serif;
+}
 .logo{
     height:50px;
     width:auto;
@@ -18,5 +21,22 @@ nav li{
     word-spacing: 5px;
 }
 .content{
-    height: 1000px;
+    padding-top:100px;
+}
+.food_pic{
+    height:100px;
+    width:auto;
+    margin: 10px;
+}
+.comment{
+    margin-top:80px;
+    margin-right:0;
+}
+.menu_title{
+    width:900px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.checkbox+.checkbox, .radio+.radio {
+    margin-top: 50px;
 }

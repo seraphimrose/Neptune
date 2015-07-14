@@ -36,5 +36,5 @@ $t2=pi_pei($str,"t2:'","'");
 //匹配当前时间，用时间戳
 $date=date("Y-m-d",pi_pei($str,"time:'","'"));
 
-echo $date." 上海 ".$s." ".$t2."~".$t1."℃";
+echo $date." ".$city." ".$s." ".$t2."~".$t1."℃";
 

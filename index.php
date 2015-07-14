@@ -5,7 +5,6 @@
     <title>百姓网订餐</title>
     <meta charset="UTF-8"/>
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/neptune.css"/>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -16,7 +15,6 @@
 <?php include 'weather.php' ?>
 
 <body>
-
 
 <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -49,24 +47,49 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <form>
+                    <?php
+                    try {
+                        $dbh = new PDO('mysql:host=localhost;dbname=neptune', "root", "");
+                        $dbh->query("set names utf8");
+                        foreach ($dbh->query('SELECT * from menu where flag = 0') as $tmp) :
+                            ?>
                     <div class="radio table-bordered menu_items">
-                        <label>
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <input type="radio" name="menu" value="option1" class="sr-only">
-                                    <img src="src/青椒肉丝.jpg" class="food_pic"/>
+                                    <?php
+                                    if (!empty($tmp[2])) {
+                                        ?>
+                                        <img src="<?php echo $tmp[2] ?>" class="food_pic"/>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <img src="jpg\0.gif" class="food_pic"/>
+                                        <?php
+                                    }
+                                    ?>
                                 </div>
-                                <div class="col-md-8">
-                                    <h4>青椒肉丝饭</h4><br/>
-                                    <p>青椒肉丝是一道色香味俱全的汉族名菜，属于川菜系。以青椒为主要食材，口味香辣，色香味俱全，营养价值丰富</p>
+                                <div class="col-md-7">
+                                    <h4><?php echo $tmp[1] ?></h4><br/>
+
+                                    <p><?php echo $tmp[4] ?></p>
                                 </div>
                                 <div class="col-md-1">
                                     <button class="btn btn-primary comment"><span class="glyphicon glyphicon-comment"></span></button>
                                 </div>
                             </div>
-                        </label>
                     </div>
+                            <?php
+                        endforeach;
+                        $dbh = null;
+                    } catch (PDOException $e) {
+                        print "Error!: " . $e->getMessage();
+                        die();
+                    }
+
+                    ?>
                 </form>
+
             </div>
             <div class="col-md-2"></div>
         </div>

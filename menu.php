@@ -1,4 +1,4 @@
-<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="js/jquery-2.1.4.min.js"></script>
 <script>
     $(document).ready(function () {
         $(".menu_items").on("click", function () {
@@ -12,11 +12,11 @@
         }).on("mouseout", function () {
             $(this).css({"cursor": "pointer"});
         });
-    });
 
+    });
 </script>
 <div class="menu_title">
-    <h1 style="text-align: center;color:red">今日菜单</h1>
+    <h1 style="text-align: center;color:#000033">今日菜单</h1>
     <hr/>
 </div>
 <div class="row">
@@ -29,10 +29,10 @@
                 $dbh->query("set names utf8");
                 foreach ($dbh->query('SELECT * from menu where flag = 0') as $tmp) :
                     ?>
-                    <div class="radio table-bordered menu_items">
+                    <div class="table-bordered menu_items">
                         <div class="row">
                             <div class="col-md-3">
-                                <input type="radio" name="menu" value="option1" class="sr-only">
+                                <input type="radio" name="menu" value="option1" class="hide"/>
                                 <?php
                                 if (!empty($tmp[2])) {
                                     ?>
@@ -42,17 +42,19 @@
                                     ?>
                                     <img src="jpg\0.gif" class="food_pic"/>
                                     <?php
-                                } 
+                                }
                                 ?>
                             </div>
                             <div class="col-md-7">
                                 <h4><?php echo $tmp[1] ?></h4><br/>
-
                                 <p><?php echo $tmp[4] ?></p>
                             </div>
                             <div class="col-md-1">
                                 <button class="btn btn-primary comment"><span
                                         class="glyphicon glyphicon-comment"></span></button>
+                            </div>
+                            <div class="col-md-1">
+                                <span class="glyphicon glyphicon-ok hide" style="color:green;margin:10px;"></span>
                             </div>
                         </div>
                     </div>
@@ -65,7 +67,6 @@
             }
             ?>
         </div>
-
         <div class="col-md-2">
             <button class="btn btn-warning" type="submit" style="position: fixed;margin-top:200px;">就吃这个了！</button>
         </div>

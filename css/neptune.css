@@ -37,6 +37,6 @@ nav li{
     margin-left:auto;
     margin-right:auto;
 }
-.checkbox+.checkbox, .radio+.radio {
-    margin-top: 50px;
+.menu_items{
+    margin-top:20px;
 }

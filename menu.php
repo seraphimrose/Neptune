@@ -25,7 +25,7 @@
                                     ?>
                                     <img src="jpg\0.gif" class="food_pic"/>
                                     <?php
-                                }
+                                } 
                                 ?>
                             </div>
                             <div class="col-md-7">

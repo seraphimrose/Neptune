@@ -13,10 +13,10 @@ if (mysqli_connect_errno($con)) {
 mysqli_query($con,"SET NAMES UTF8");
 //存放由mysqli_query()函数返回的数据，函数需要验证是否返回false
 //关键字order做表名必须加上``
-if($rslt=mysqli_query($con,"SELECT picture,name,COUNT(user_id) as num FROM menu,`order` WHERE menu.id=`order`.dish_id GROUP BY name")){
+if($rslt=mysqli_query($con,"SELECT picture,dishname,COUNT(user_id) as num FROM menu,`order` WHERE menu.id=`order`.dish_id GROUP BY dishname")){
 	//以数组的形式从记录集返回从第一行到最后一行的每一行
 	while ($row = mysqli_fetch_array($rslt, MYSQLI_BOTH)) {
-		echo $row['picture'] . " " . $row['name'] . " " . $row['num'] . "\n";
+		echo $row['picture'] . " " . $row['dishname'] . " " . $row['num'] . "\n";
 	}
 
 	mysqli_free_result($rslt);

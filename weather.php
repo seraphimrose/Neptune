@@ -1,6 +1,6 @@
 <?php
 
-// 设置内部字符编码为utf-8
+	// 设置内部字符编码为utf-8
     header("Content-type: text/html; charset=utf-8");
 
     /*

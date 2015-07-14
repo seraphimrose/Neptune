@@ -23,6 +23,7 @@ if ($dbh === false) {
     $status["id"] = $row;
     $status["status"] = true;
 }
+$dbh = null;
 echo json_en($status);
 function json_en($val)
 {
@@ -33,7 +34,7 @@ function json_en($val)
 //        function addSubmitFunc(){
 //            var params=$("#addform").serialize(); //序列化表单的值
 //            $.ajax({
-//                url:'insert.php', //后台处理程序
+//                url:'addmenu.php', //后台处理程序
 //                type:'post',         //数据发送方式
 //                dataType:'json',     //接受数据格式
 //                data:params,         //要传递的数据

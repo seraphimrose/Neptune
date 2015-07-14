@@ -1,3 +1,20 @@
+<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+<script>
+    $(document).ready(function () {
+        $(".menu_items").on("click", function () {
+
+            $(this).css("background-color", "#FFCC99").find("[name='menu']").attr("checked", "true");
+            $(this).find(".glyphicon-ok").removeClass("hide");
+            $(this).siblings(".menu_items").css("background-color", "#FFFFFF").find(".glyphicon-ok").addClass("hide");
+
+        }).on("mouseover", function () {
+            $(this).css({"cursor": "hand"});
+        }).on("mouseout", function () {
+            $(this).css({"cursor": "pointer"});
+        });
+    });
+
+</script>
 <div class="menu_title">
     <h1 style="text-align: center;color:red">今日菜单</h1>
     <hr/>
@@ -46,7 +63,6 @@
                 print "Error!: " . $e->getMessage();
                 die();
             }
-
             ?>
         </div>
 

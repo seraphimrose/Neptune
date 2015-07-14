@@ -28,11 +28,10 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">点餐</span></a></li>
-                    <li><a href="#">菜单</a></li>
-                    <li><a href="#">统计</a></li>
-                    <li><a href="#">吐槽</a></li>
-
+                    <li class="active" id="menu"><a href="#">点餐</span></a></li>
+                    <li id="modify"><a href="#">修改</a></li>
+                    <li id="list"><a href="#">统计</a></li>
+                    <li id="comment"><a href="#">吐槽</a></li>
                 </ul>
                 <ul class="nav navbar-nav login">
                     <li><p class="weather"><?php echo $date."  ".$city."  ".$s."  ".$t2."～".$t1." ℃ "; ?></p></li>
@@ -42,36 +41,7 @@
         </div>
     </nav>
     <div class="content">
-        <div class="menu_title">
-            <h1 style="text-align: center;color:red">今日菜单</h1><hr/>
-        </div>
-        <div class="row">
-            <form>
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="table-bordered menu_items">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <input type="radio" name="menu" value="option1" class="hide"/>
-                                <img src="src/青椒肉丝.jpg" class="food_pic"/>
-                            </div>
-                            <div class="col-md-7">
-                                <h4>青椒肉丝饭</h4><br/>
-                                <p>青椒肉丝是一道色香味俱全的汉族名菜，属于川菜系。以青椒为主要食材，口味香辣，色香味俱全，营养价值丰富</p>
-                            </div>
-                            <div class="col-md-1">
-                                <button class="btn btn-primary comment"><span class="glyphicon glyphicon-comment"></span></button>
-                            </div>
-                            <div class="col-md-1">
-                                <span class="glyphicon glyphicon-ok hide" style="color:green;margin:10px;"></span>
-                            </div>
-                        </div>
-                    </div>
-                <div class="col-md-2">
-                    <button class="btn btn-warning" type="submit" style="position: fixed;margin-top:200px;">就吃这个了！</button>
-                </div>
-            </form>
-        </div>
+
 
     </div>
     <div class="footer">

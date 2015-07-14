@@ -6,17 +6,17 @@ header("content_type:text/html; charset = utf_8");
  * Date: 2015/7/13
  * Time: 16:24
  */
-$dbms = 'mysql';     //Êı¾İ¿âÀàĞÍ
-$host = 'localhost'; //Êı¾İ¿âÖ÷»úÃû
-$dbName = 'neptune';    //Ê¹ÓÃµÄÊı¾İ¿â
-$user = 'root';      //Êı¾İ¿âÁ¬½ÓÓÃ»§Ãû
-$pass = '';          //¶ÔÓ¦µÄÃÜÂë
+$dbms = 'mysql';     //æ•°æ®åº“ç±»å‹
+$host = 'localhost'; //æ•°æ®åº“ä¸»æœºå
+$dbName = 'neptune';    //ä½¿ç”¨çš„æ•°æ®åº“
+$user = 'root';      //æ•°æ®åº“è¿æ¥ç”¨æˆ·å
+$pass = '';          //å¯¹åº”çš„å¯†ç 
 $dsn = "$dbms:host=$host;dbname=$dbName";
 
 
 try {
-    $dbh = new PDO($dsn, $user, $pass); //³õÊ¼»¯Ò»¸öPDO¶ÔÏó
-    // echo "³É¹¦Á¬½Ó!<br/>";
+    $dbh = new PDO($dsn, $user, $pass); //åˆå§‹åŒ–ä¸€ä¸ªPDOå¯¹è±¡
+    // echo "æˆåŠŸè¿æ¥!<br/>";
 } catch (PDOException $e) {
     die ("Error!: " . $e->getMessage() . "<br/>");
 }

@@ -1,11 +1,10 @@
 <?php
 
-// include("connect-db.php");
+include("connect-db.php");
 
-function login($usr, $pwd)
+function login($usr, $pwd, $dbh)
 {
     $password = NULL;
-    include("connect-db.php");
     $stmt = $dbh->prepare("SELECT * FROM user where username = ?");
     if ($stmt->execute(array($usr))) {
         while ($row = $stmt->fetch()) {
@@ -36,13 +35,13 @@ header("content_type:text/html; charset = utf_8");
 
 
 
-login("12345", "12345");
-login("yy", "12345");
-login("yy", "mima");
+login("12345", "12345", $dbh);
+login("yy", "12345", $dbh);
+login("yy", "mima", $dbh);
 
 /*
 $password = crypt("mima"); // 自动生成盐值
-$username = "yy";
+$username = "uu";
 
 $dbh->query("INSERT INTO user (`id`, `username`, `password`, `isAdmin`) VALUES (NULL, '$username', '$password', '0')");
 */

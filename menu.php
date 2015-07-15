@@ -21,6 +21,17 @@
         $(".well").click(function (e) {
             e.stopPropagation();
         });
+
+        var dish_id=$("input:checked").parents(".menu_items").attr("id");
+        $(".order_submit").click(function(){
+            $.post("lyy-test/func-order",{
+                dish_id:dish_id
+            },function(data,status){
+                alert(data);
+                $("content").load("orderFinish.php");
+            });
+        });
+
     });
 
 
@@ -37,7 +48,7 @@
             <?php include "conn.php";
                 foreach ($dbh->query('SELECT * from menu where flag = 0') as $tmp) {
                     ?>
-                    <div class="table-bordered menu_items">
+                    <div class="table-bordered menu_items" id="<?php echo "dish_".$tmp[0] ?>">
                         <div class="row">
                             <div class="col-md-3">
                                 <?php
@@ -113,7 +124,7 @@
             ?>
         </div>
         <div class="col-md-2">
-            <button class="btn btn-warning" type="submit" style="position: fixed;margin-top:200px;">就吃这个了！</button>
+            <button class="btn btn-warning order_sumbit" type="button" style="position: fixed;margin-top:200px;">就吃这个了！</button>
         </div>
     </form>
 </div>

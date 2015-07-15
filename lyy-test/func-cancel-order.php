@@ -6,16 +6,20 @@
  * Time: 10:16
  */
 include("connect-db.php");
+session_start();
 
-function delete_order($order_id, $dbh)
-{
-    $ret = $dbh->exec("DELETE FROM `neptune`.`order` WHERE `order`.`id` = $order_id");
+include_once("func-check-login.php");
+
+if( $login ) {
+    $order_id = $_POST['order_id'];
+
+    $ret = $dbh->exec("DELETE FROM `neptune`.`today_order` WHERE `today_order`.`id` = $order_id");
     echo $ret;
     if ($ret != 1) {
-        $status['status'] = false;
+        echo "取消订单失败";
     } else {
-        $status['status'] = true;
+        echo "取消订单成功";
     }
-    echo json_encode($status);
 }
 
+?>

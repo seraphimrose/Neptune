@@ -1,3 +1,6 @@
+<?php include 'weather.php';
+session_start();?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,11 +13,27 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/neptune.js"></script>
+    <script type="application/javascript">
+        <?php
+        if(isset($_SESSION['username'])) {
+        echo '
+            $(document).ready(function(){
+                $("#show-login").hide();
+            });
+            ';
+        }
+        else {
+        echo '
+            $(document).ready(function(){
+                $("#show-logout").hide();
+                $("#show-user").hide();
+            });
 
+            ';
+        }
+?>
+    </script>
 </head>
-
-<?php include 'weather.php' ?>
-
 <body>
 
 
@@ -35,7 +54,9 @@
                 </ul>
                 <ul class="nav navbar-nav login">
                     <li><p class="weather"><?php echo $date."  ".$city."  ".$s."  ".$t2."～".$t1." ℃ "; ?></p></li>
-                    <li><a href="#" data-toggle="modal" data-target="#loginModal">登录</a></li>
+                    <li id="show-user"><p class="user-info"><?php echo "Hi, " . $_SESSION['username']; ?></p></li>
+                    <li id="show-logout"><a href="#">退出</a></li>
+                    <li id="show-login"><a href="#" data-toggle="modal" data-target="#loginModal">登录</a></li>
                 </ul>
             </div>
         </div>
@@ -47,30 +68,40 @@
     <div class="footer">
 
     </div>
+    <div id="empty" style="display: none"></div>
 </div>
 
 <!--login modal-->
 <div class="modal fade" id="loginModal">
     <div class="modal-dialog">
         <div class="modal-content">
+
+
+
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">登录</h4>
             </div>
+
+
+
+
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>账号</label>
-                        <input class="form-control" name="id" type="text"/>
-                    </div>
-                    <div class="form-group">
-                        <label>密码</label>
-                        <input class="form-control" name="password" type="password"/>
-                    </div>
-                    <div style="text-align: center">
-                        <button type="submit" class="btn btn-primary">登录</div>
+
+                <div class="form-group">
+                    <label>账号</label>
+                    <input class="form-control" name="id" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input class="form-control" name="password" type="password"/>
+                </div>
+                <div style="text-align: center">
+                    <button type="submit" class="btn btn-primary login-submit">登录</button>
+                </div>
+
             </div>
-            </form>
+
         </div>
     </div>
 </div>

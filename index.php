@@ -68,7 +68,7 @@ session_start();
 
     </div>
     <div class="footer">
-
+        <p>I am a footer</p>
     </div>
     <div id="empty" style="display: none"></div>
 </div>

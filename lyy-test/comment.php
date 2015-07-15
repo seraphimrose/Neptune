@@ -59,7 +59,7 @@
 
         <div class="menu_items">
             <div class="row">
-                <div class="col-md-12"><textarea class="form-control tc-input" name="new-tc" type="text" style=""/></div>
+                <div class="col-md-12"><textarea class="form-control tc-input" name="new-tc" type="text" style="resize: none"/></div>
             </div>
             <div class="row"><p></p></div>
             <div class="row">

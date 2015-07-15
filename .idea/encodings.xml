@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-<<<<<<< HEAD
-    <file url="PROJECT" charset="UTF-8" />
-=======
+
+    <file url="file://$PROJECT_DIR$/lyy-test/connect-db.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lyy-test/cypyt-test.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lyy-test/func-cancel-order.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lyy-test/func-login.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lyy-test/func-order.php" charset="UTF-8" />
+
     <file url="file://$PROJECT_DIR$/menu.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order.php" charset="UTF-8" />
->>>>>>> 322061dc1916e0b59202145035dca75e47f807bf
+
   </component>
 </project>

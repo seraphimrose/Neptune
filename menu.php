@@ -82,8 +82,8 @@
                             </form>
                             <hr/>
                             <?php
-                            foreach ($dbh->query("SELECT * from comment where dish_id = '$tmp[0]'  ") as $cmt) {
-                                ?>
+                                foreach ($dbh->query("SELECT * from comment where dish_id = '$tmp[0]'  ") as $cmt) {
+                                    ?>
                                 <div class="row">
                                     <?php
                                     foreach ($dbh->query("SELECT * from user where id = '$cmt[1]'  ") as $urt) {
@@ -94,7 +94,7 @@
                                         <?php
                                     }
                                     ?>
-                                    <div class="col-md-10">
+                                    <div class="col-md-offset-1 col-md-9">
                                         <?php echo $cmt[4] ?> <!-- 这菜非常难吃:链接后台获取评论  -->
                                     </div>
                                     <p style="color:gray;margin-top:15px;">

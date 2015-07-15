@@ -5,15 +5,14 @@
  * Date: 2015/7/15
  * Time: 10:08
  */
-
-header("Content-Type: text/html;charset=utf-8");
 date_default_timezone_set('prc');
+header("Content-Type: text/html;charset=utf-8");
 include "conn.php";
 
 $userid = "3";
 $dishid = "3";
 $time = time();
-$mysqltime = date('Y-m-d H:i:s', $time);
+$mysqltime=date('Y-m-d H:i:s',$time);
 $content = "yyºÃ³ÔÂð£¿";
 $status = null;
 $insrt = "INSERT INTO comment(id, user_id, dish_id, time,content) VALUES (null,'$userid','$dishid','$mysqltime','$content')";

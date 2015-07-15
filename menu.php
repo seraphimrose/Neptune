@@ -53,9 +53,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <?php
-            try {
-                $dbh = new PDO('mysql:host=localhost;dbname=neptune', "root", "");
-                $dbh->query("set names   utf8");
+            include "conn.php";
                 foreach ($dbh->query('SELECT * from menu where flag = 0') as $tmp) {
                     ?>
                     <div class="table-bordered menu_items" id="<?php echo $tmp[0] ?>">
@@ -132,10 +130,6 @@
                     <?php
                 }
                 $dbh = null;
-            } catch (PDOException $e) {
-                print "Error!: " . $e->getMessage();
-                die();
-            }
             ?>
         </div>
         <div class="col-md-2">

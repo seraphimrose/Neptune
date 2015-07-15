@@ -29,7 +29,7 @@ nav li{
     margin: 10px;
 }
 .comment{
-    margin-top:80px;
+    margin-top:45px;
     margin-right:0;
 }
 .menu_title{
@@ -39,4 +39,31 @@ nav li{
 }
 .menu_items{
     margin-top:20px;
+}
+.comment_form{
+    resize: none;
+}
+.well{
+    margin-bottom: 0;
+}
+
+.user-info{
+    margin:15px;
+    color: black;
+    word-spacing: 5px;
+}
+.tc-usr, .tc-content{
+    margin: 15px;
+    font-size: 15px;
+    color: black;
+}
+.tc-time{
+    margin: 15px;
+    font-size: 10px;
+    color: gray;
+}
+
+.tc-input{
+    min-height: 120px;
+
 }

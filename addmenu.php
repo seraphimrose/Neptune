@@ -7,9 +7,9 @@
  */
 header("Content-Type: text/html;charset=utf-8");
 include "conn.php";
-$name = "测试a";
-$picture = "jpg/8.jpg";
-$desc = "aa就是试试";
+$name = "测试阿";
+$picture = "jpg/6.jpg";
+$desc = "b就是试试";
 
 $status = null;
 $insrt = "INSERT INTO menu(id, dishname, picture, flag,description) VALUES (null,'$name','$picture',0,'$desc')";
@@ -23,7 +23,9 @@ if ($dbh === false) {
     $status["id"] = $row;
     $status["status"] = true;
 }
+$dbh = null;
 echo json_en($status);
+
 function json_en($val)
 {
     return json_encode($val);
@@ -33,7 +35,7 @@ function json_en($val)
 //        function addSubmitFunc(){
 //            var params=$("#addform").serialize(); //序列化表单的值
 //            $.ajax({
-//                url:'insert.php', //后台处理程序
+//                url:'addmenu.php', //后台处理程序
 //                type:'post',         //数据发送方式
 //                dataType:'json',     //接受数据格式
 //                data:params,         //要传递的数据

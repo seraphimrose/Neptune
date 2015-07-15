@@ -5,10 +5,10 @@
     $(document).ready(function () {
         $(".menu_items").on("click", function () {
 
-            $(this).css("background-color", "#FFCC99").find("[name='menu']").attr("checked", "true");
+            $(this).css("background-color", "#FFCC99").find("input[name='menu']").attr("checked","checked");
             $(this).find(".glyphicon-ok").removeClass("hide");
             $(this).siblings(".menu_items").css("background-color", "#FFFFFF").find(".glyphicon-ok").addClass("hide");
-
+            $(this).siblings(".menu_items").find("input[name='menu']").removeAttr("checked");
         }).on("mouseover", function () {
             $(this).css({"cursor": "hand"});
         }).on("mouseout", function () {
@@ -22,16 +22,26 @@
             e.stopPropagation();
         });
 
-        var dish_id=$("input:checked").parents(".menu_items").attr("id");
+
+//        var dish_id=1;
         $(".order_submit").click(function(){
-            $.post("lyy-test/func-order",{
+            var dish_id=$("input:checked").parents(".menu_items").attr("id");
+//            alert(dish_id);
+            $.post("lyy-test/func-order.php",{
                 dish_id:dish_id
             },function(data,status){
                 alert(data);
-                $("content").load("orderFinish.php");
+                $(".content").load("orderFinish.php");
             });
         });
-
+        $(".comment_submit").click(function(){
+            var dish_id=$(this).parents(".collapse").prev(".menu_item").attr("id");
+            var content=$(this).parents(".collapse").find("textarea").val();
+            $.post("addcomment.php",{
+                dish_id:dish_id,
+                content:content
+            })
+        })
     });
 </script>
 <div class="menu_title">
@@ -45,10 +55,11 @@
             <?php
             try {
                 $dbh = new PDO('mysql:host=localhost;dbname=neptune', "root", "");
-                $dbh->query("set names utf8");
+                $dbh->query("set names   utf8");
                 foreach ($dbh->query('SELECT * from menu where flag = 0') as $tmp) {
                     ?>
-                    <div class="table-bordered menu_items" id="<?php echo "dish_".$tmp[0] ?>">
+                    <div class="table-bordered menu_items" id="<?php echo $tmp[0] ?>">
+                        <input class="sr-only" type="radio" name="menu" value="option"/>
                         <div class="row">
                             <div class="col-md-3">
                                 <?php
@@ -84,10 +95,10 @@
                             <form>
                                 <div class="row">
                                     <div class="col-md-10">
-                                        <textarea name="comment" rows="auto" cols="80" class="comment_form"></textarea>
+                                        <textarea name="content" rows="auto" cols="80" class="comment_form"></textarea>
                                     </div>
                                     <div class="col-md-2">
-                                        <button class="btn btn-primary" type="submit">提交</button>
+                                        <button class="btn btn-primary comment_submit" type="button">提交</button>
                                     </div>
                                 </div>
                             </form>
@@ -128,7 +139,7 @@
             ?>
         </div>
         <div class="col-md-2">
-            <button class="btn btn-warning order_sumbit" type="button" style="position: fixed;margin-top:200px;">就吃这个了！</button>
+            <button class="btn btn-warning order_submit" type="button" style="position: fixed;margin-top:200px;">就吃这个了！</button>
         </div>
     </form>
 </div>

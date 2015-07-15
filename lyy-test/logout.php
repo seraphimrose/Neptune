@@ -11,6 +11,6 @@ unset($_SESSION['login']);
 unset($_SESSION['user_id']);
 unset($_SESSION['username']);
 unset($_SESSION['isAdmin']);
-echo "Logout!"
+echo "已退出"
 
 ?>

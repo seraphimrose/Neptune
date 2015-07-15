@@ -16,18 +16,18 @@ $stmt->execute(array($usr));
 $row = $stmt->fetch();
 
 if ($row == NULL) {
-    echo "No such user!";
+    echo "用户名不存在";
 }
 else{
     $password = $row['password'];
     if (crypt($pwd, $password) == $password){
-        echo "Password verified!";
+        echo "登陆成功";
         $_SESSION['login'] = true;
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['isAdmin'] =  $row['isAdmin'];
     }
     else {
-        echo "Username and password don't match!";
+        echo "用户名与密码不匹配";
     }
 }

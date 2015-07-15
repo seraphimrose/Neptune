@@ -17,10 +17,10 @@ function login($usr, $pwd, $dbh)
 
     if (crypt($pwd, $password) == $password) {
         echo "Password verified!<br/>";
-    }
-    else
+    } else
         echo "error<br/>";
 }
+
 ?>
 
 <?php
@@ -32,7 +32,6 @@ header("content_type:text/html; charset = utf_8");
  * Date: 2015/7/13
  * Time: 14:46
  */
-
 
 
 login("12345", "12345", $dbh);

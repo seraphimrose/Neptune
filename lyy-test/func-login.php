@@ -17,17 +17,15 @@ $row = $stmt->fetch();
 
 if ($row == NULL) {
     echo "用户名不存在";
-}
-else{
+} else {
     $password = $row['password'];
-    if (crypt($pwd, $password) == $password){
+    if (crypt($pwd, $password) == $password) {
         echo "登陆成功";
         $_SESSION['login'] = true;
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
-        $_SESSION['isAdmin'] =  $row['isAdmin'];
-    }
-    else {
+        $_SESSION['isAdmin'] = $row['isAdmin'];
+    } else {
         echo "用户名与密码不匹配";
     }
 }

@@ -28,4 +28,3 @@ foreach ($dbh->query("SELECT * from comment where dish_id = '$tmp[0]'  ") as $cm
     <?php
 }
 ?>
-?>

@@ -7,10 +7,11 @@
  */
 include("connect-db.php");
 
-function delete_order($order_id, $dbh) {
+function delete_order($order_id, $dbh)
+{
     $ret = $dbh->exec("DELETE FROM `neptune`.`order` WHERE `order`.`id` = $order_id");
     echo $ret;
-    if($ret != 1){
+    if ($ret != 1) {
         $status['status'] = false;
     } else {
         $status['status'] = true;

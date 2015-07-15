@@ -22,7 +22,10 @@
             e.stopPropagation();
         });
     });
+
+
 </script>
+
 <div class="menu_title">
     <h1 style="text-align: center;color:#000033">今日菜单</h1>
     <hr/>
@@ -31,10 +34,7 @@
     <form>
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <?php
-            try {
-                $dbh = new PDO('mysql:host=localhost;dbname=neptune', "root", "");
-                $dbh->query("set names utf8");
+            <?php include "conn.php";
                 foreach ($dbh->query('SELECT * from menu where flag = 0') as $tmp) {
                     ?>
                     <div class="table-bordered menu_items">
@@ -82,8 +82,8 @@
                             </form>
                             <hr/>
                             <?php
-                                foreach ($dbh->query("SELECT * from comment where dish_id = '$tmp[0]'  ") as $cmt) {
-                                    ?>
+                            foreach ($dbh->query("SELECT * from comment where dish_id = '$tmp[0]'  ") as $cmt) {
+                                ?>
                                 <div class="row">
                                     <?php
                                     foreach ($dbh->query("SELECT * from user where id = '$cmt[1]'  ") as $urt) {
@@ -105,15 +105,11 @@
                             }
                             ?>
                         </div>
-
                     </div>
+
                     <?php
                 }
                 $dbh = null;
-            } catch (PDOException $e) {
-                print "Error!: " . $e->getMessage();
-                die();
-            }
             ?>
         </div>
         <div class="col-md-2">

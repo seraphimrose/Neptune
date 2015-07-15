@@ -5,15 +5,19 @@
  * Date: 2015/7/15
  * Time: 10:08
  */
-date_default_timezone_set('prc');
+session_start();
 header("Content-Type: text/html;charset=utf-8");
+date_default_timezone_set('prc');
 include "conn.php";
-
-$userid = "3";
-$dishid = "3";
+include_once "lyy-test/func-login-check.php";
+if (!isset($_SESSION['user_id'])) {
+    echo "æœªç™»å½•";
+}
+$userid = "2";
+$dishid = "1";
+$content = "æˆ‘å°±æ˜¯è¯´æƒ³è¯•è¯•ã€‚";
 $time = time();
-$mysqltime=date('Y-m-d H:i:s',$time);
-$content = "yyºÃ³ÔÂğ£¿";
+$mysqltime = date('Y-m-d H:i:s', $time);
 $status = null;
 $insrt = "INSERT INTO comment(id, user_id, dish_id, time,content) VALUES (null,'$userid','$dishid','$mysqltime','$content')";
 $res = $dbh->query($insrt);
@@ -22,30 +26,4 @@ if ($dbh === false) {
 } else {
     $status["status"] = true;
 }
-$dbh = null;
-echo json_en($status);
 
-function json_en($val)
-{
-    return json_encode($val);
-}
-
-//    <script >
-//        function addSubmitFunc(){
-//            var params=$("#addform").serialize(); //ĞòÁĞ»¯±íµ¥µÄÖµ
-//            $.ajax({
-//                url:'addmenu.php', //ºóÌ¨´¦Àí³ÌĞò
-//                type:'post',         //Êı¾İ·¢ËÍ·½Ê½
-//                dataType:'json',     //½ÓÊÜÊı¾İ¸ñÊ½
-//                data:params,         //Òª´«µİµÄÊı¾İ
-//                success:function() {
-//                if(json.status.status){
-//                    alert("success");
-//                }else {
-//                    alert("error");
-//                }
-//                $("#myModal").modal("hide");
-//            }  //»Ø´«º¯Êı(ÕâÀïÊÇº¯ÊıÃû)
-//            });
-//        }
-//    </script>

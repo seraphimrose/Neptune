@@ -1,5 +1,5 @@
 <?php include 'weather.php';
-session_start();?>
+session_start(); ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -77,13 +77,10 @@ session_start();?>
         <div class="modal-content">
 
 
-
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">登录</h4>
             </div>
-
-
 
 
             <div class="modal-body">

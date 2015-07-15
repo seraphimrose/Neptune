@@ -28,13 +28,9 @@
 
     </script>
 </head>
-
-
 <div class="menu_title">
     <h1 style="text-align: center;color:red">吐槽！</h1><hr/>
 </div>
-
-
 <div class="row">
 
     <div class="col-md-2"></div>
@@ -59,7 +55,7 @@
 
         <div class="menu_items">
             <div class="row">
-                <div class="col-md-12"><textarea class="form-control tc-input" name="new-tc" type="text" style=""/></div>
+                <div class="col-md-12"><textarea class="form-control tc-input" name="new-tc" type="text" style="resize:none;"/></div>
             </div>
             <div class="row"><p></p></div>
             <div class="row">
@@ -68,14 +64,7 @@
                 <div class="col-md-5"></div>
             </div>
             <div class="row"><p></p></div>
-
-
         </div>
-
-
-
-
-
     </div>
     <div class="col-md-2"></div>
 

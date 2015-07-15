@@ -7,14 +7,14 @@
  * Time: 14:35
  */
 
-if(isset($_SESSION['user_id'])) {
+include_once("func-check-login.php");
+
+if( $login ) {
     unset($_SESSION['login']);
     unset($_SESSION['user_id']);
     unset($_SESSION['username']);
     unset($_SESSION['isAdmin']);
     echo "已退出";
 }
-else {
-    echo "未登录";
-}
+
 ?>

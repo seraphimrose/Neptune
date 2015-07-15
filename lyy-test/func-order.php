@@ -9,7 +9,9 @@
 include("connect-db.php");
 session_start();
 
-if( isset($_SESSION['user_id']) ) {
+include_once("func-check-login.php");
+
+if( $login ) {
     $usr_id = $_SESSION['user_id'];
     $dish_id = $_POST['dish_id'];
     $stmt = $dbh->prepare("INSERT INTO `neptune`.`today_order` (`id`, `user_id`, `dish_id`, `time`, `reserve`) VALUES (NULL, ?, ?, NOW(), '0');");
@@ -21,10 +23,6 @@ if( isset($_SESSION['user_id']) ) {
         echo "点餐成功";
     }
 }
-else {
-    echo "未登录";
-}
-
 
 
 

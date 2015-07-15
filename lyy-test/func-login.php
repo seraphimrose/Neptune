@@ -10,7 +10,7 @@ include("connect-db.php");
 
 
 if(isset($_SESSION['user_id'])) {
-    echo $_SESSION['user_id'] . "请不要重复登陆";
+    echo $_SESSION['username'] . ", 请不要重复登陆";
 }
 else {
 

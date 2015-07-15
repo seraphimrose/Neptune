@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
+=======
+  <component name="PhpProjectSharedConfiguration" php_language_level="5.3.0" />
+>>>>>>> cb8fa308a1016cc63a71743ce26e7f2ee6353bd1
 </project>

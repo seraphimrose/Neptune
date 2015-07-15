@@ -100,7 +100,6 @@
                                     <p style="color:gray;margin-top:15px;">
                                         <?php echo $cmt[3] ?> <!-- 后台获取评论时间 -->
                                     </p>
-
                                 </div>
                                 <?php
                             }

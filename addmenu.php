@@ -7,9 +7,9 @@
  */
 header("Content-Type: text/html;charset=utf-8");
 include "conn.php";
-$name = "测试b";
-$picture = "jpg/7.jpg";
-$desc = "a就是试试";
+$name = "测试阿";
+$picture = "jpg/6.jpg";
+$desc = "b就是试试";
 
 $status = null;
 $insrt = "INSERT INTO menu(id, dishname, picture, flag,description) VALUES (null,'$name','$picture',0,'$desc')";
@@ -25,6 +25,7 @@ if ($dbh === false) {
 }
 $dbh = null;
 echo json_en($status);
+
 function json_en($val)
 {
     return json_encode($val);

@@ -29,7 +29,7 @@ nav li{
     margin: 10px;
 }
 .comment{
-    margin-top:80px;
+    margin-top: 45px;
     margin-right:0;
 }
 .menu_title{
@@ -40,4 +40,12 @@ nav li{
 
 .menu_items {
     margin-top: 20px;
+}
+
+.comment_form {
+    resize: none;
+}
+
+.well {
+    margin-bottom: 0;
 }

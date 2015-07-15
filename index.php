@@ -17,7 +17,6 @@
 
 <body>
 
-
 <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">

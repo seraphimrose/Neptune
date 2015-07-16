@@ -35,14 +35,17 @@
         $(".well").click(function (e) {
             e.stopPropagation();
         });
-        $(".order_submit").click(function(){
+        $(".order_submit").click(function() {
             var dish_id = $("input:checked").parents(".menu_items").attr("id");
-            $.post("func-order.php", {
-                dish_id:dish_id
-            },function(data,status){
-                $(".content").load("orderFinish.php");
-            });
+            $.post("func-order.php", {dish_id: dish_id},
+                function (data, status) {
+                    $.post("orderFinish.php", {dish_id: dish_id},
+                        function (data, status) {
+                            $(".content").html(data);
+                        });
+                });
         });
+
         $(".comment_submit").click(function () {
             var dish_id = $(this).parents(".collapse").prev(".menu_items").attr("id");
             var content = $(this).parents(".collapse").find("textarea").val();
@@ -114,11 +117,11 @@
                                 <textarea name="content" rows="auto" cols="80" class="comment_form"></textarea>
                             </div>
                             <div class="col-md-2">
-                                <button class="btn btn-primary comment_submit" type="button">提交</button>
+                                <button class="btn btn-primary comment_submit" type="button" style="margin-top: 5px;">提交</button>
                             </div>
                         </div>
 
-                        <hr/>
+                        <hr style="margin-top: 18px;" class="style-two"/>
 
                         <div class="comment-content">
 

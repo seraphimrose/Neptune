@@ -64,11 +64,11 @@ session_start();
             </div>
         </div>
     </nav>
-    <div class="content">
+    <div class="content" style="margin-bottom: 50px">
 
 
     </div>
-    <div class="footer">
+    <div class="footer navbar-fixed-bottom">
         <p>I am a footer</p>
     </div>
     <div id="empty" style="display: none"></div>

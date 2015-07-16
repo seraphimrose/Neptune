@@ -6,7 +6,7 @@
  * Time: 9:56
  */
 include "conn.php";
-$id = "27";//
+$id = $_POST['dish_id'];//
 $del = "update menu set flag = 1 where id = '$id' ";//ok
 $dbh->query($del);
 

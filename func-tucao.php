@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("connect-db.php");
+include("conn.php");
 
 include_once("func-check-login.php");
 

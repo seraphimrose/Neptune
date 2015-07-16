@@ -6,7 +6,7 @@
  * Time: 10:40
  */
 session_start();
-include("connect-db.php");
+include("conn.php");
 include("func-check-login.php");
 if($login) {
     if(!$_SESSION['isAdmin']) {

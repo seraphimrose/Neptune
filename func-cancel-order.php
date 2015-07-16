@@ -5,7 +5,7 @@
  * Date: 2015/7/14
  * Time: 10:16
  */
-include("connect-db.php");
+include("conn.php");
 session_start();
 
 include_once("func-check-login.php");

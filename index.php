@@ -35,6 +35,7 @@ session_start();
         }
 ?>
     </script>
+
 </head>
 <body>
 
@@ -46,7 +47,7 @@ session_start();
                 <!--                    <a class="navbar-brand" href="#"><img class="logo" src="src/baixingLOGO.png"/> </a>-->
                 <a href="#"><img class="logo" src="src/baixingLOGO.png"/></a>
             </div>
-
+            <div name="ekko"></div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active" id="menu"><a href="#">点餐</span></a></li>
@@ -63,11 +64,11 @@ session_start();
             </div>
         </div>
     </nav>
-    <div class="content">
+    <div class="content" style="margin-bottom: 50px">
 
 
     </div>
-    <div class="footer">
+    <div class="footer navbar-fixed-bottom">
         <p>I am a footer</p>
     </div>
     <div id="empty" style="display: none"></div>

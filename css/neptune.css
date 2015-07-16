@@ -29,7 +29,7 @@ nav li{
     margin: 10px;
 }
 .comment{
-    margin-top:45px;
+    margin-top: 45px;
     margin-right:0;
 }
 .menu_title{
@@ -37,33 +37,44 @@ nav li{
     margin-left:auto;
     margin-right:auto;
 }
-.menu_items{
-    margin-top:20px;
+
+.menu_items {
+    margin-top: 20px;
 }
-.comment_form{
+
+.comment_form {
     resize: none;
 }
-.well{
+
+.well {
     margin-bottom: 0;
 }
 
-.user-info{
-    margin:15px;
+.user-info {
+    margin: 15px;
     color: black;
     word-spacing: 5px;
 }
-.tc-usr, .tc-content{
+
+.tc-usr {
+    margin: 15px;
+    font-size: 15px;
+    color: red;
+}
+
+.tc-content {
     margin: 15px;
     font-size: 15px;
     color: black;
 }
-.tc-time{
+
+.tc-time {
     margin: 15px;
     font-size: 10px;
     color: gray;
 }
 
-.tc-input{
+.tc-input {
     min-height: 120px;
 
 }
@@ -83,4 +94,20 @@ nav li{
     width:60px;
     height:60px;
     border-radius:100px;
+}
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+hr.style-six {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer {
+    background: rgb(245,245,245);
 }

@@ -48,7 +48,7 @@
             <div class="row"><p></p></div>
         </div>
         <?php
-        include("connect-db.php");
+        include("conn.php");
 
         foreach ($dbh->query("SELECT username, content, time FROM `tucao` join `user` WHERE `tucao`.user_id = `user`.id ORDER BY time DESC") as $row) {
             echo '<div class="tc menu_items table-bordered">

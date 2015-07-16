@@ -27,7 +27,7 @@
         $(".order_submit").click(function(){
             var dish_id=$("input:checked").parents(".menu_items").attr("id");
 //            alert(dish_id);
-            $.post("lyy-test/func-order.php",{
+            $.post("func-order.php",{
                 dish_id:dish_id
             },function(data,status){
                 alert(data);
@@ -42,7 +42,56 @@
                 content:content
             })
         })
+        $(".add_submit").hide();
+        $(".delete_submit").hide();
+        var state = 1;
+
+        $(".manage_submit").click(function(){
+            var order=$(".order_submit");
+            var manage=$(this);
+            if(state){
+                manage.animate({height:'100px',width:'100px',fontSize:'20px'},function(){
+                    manage.text("退出管理");
+                    $(".add_submit").show();
+                    $(".delete_submit").show();
+                });
+                order.animate({opacity:'0.1'},function(){
+                    order.hide();
+                })
+
+            }else{
+                manage.animate({height:'60px',width:'60px',fontSize:'14px'},function(){
+                    manage.text("管理");
+                    order.show();
+                    order.animate({opacity:'1.0'});
+
+                    $(".add_submit").hide();
+                    $(".delete_submit").hide();
+                });
+            }
+            state=!state;
+        });
+
+        $(".add_submit").click(function(){
+
+        });
+
+        $(".delete_submit").click(function(){
+            var dish_id=$("input:checked").parents(".menu_items").attr("id");
+            if(confirm("确认删除？")) {
+                $.post("delmenu.php", {
+                    dish_id: dish_id
+                }, function (data, status) {
+                    $(".content").load("menu.php");
+
+                });
+            };
+        });
+
+
+
     });
+
 </script>
 <div class="menu_title">
     <h1 style="text-align: center;color:#000033">今日菜单</h1>
@@ -143,6 +192,7 @@
             <button class="btn btn-info manage_submit" type="button" style="margin-top:100px">管理</button>
             <button class="btn btn-success add_submit" type="button" style="margin-top:230px;margin-left:18px;">添加</button>
             <button class="btn btn-danger delete_submit" type="button" style="margin-top:310px;margin-left:18px;">删除</button>
+
         </div>
     </form>
 </div>

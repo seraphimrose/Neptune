@@ -67,7 +67,20 @@ nav li{
     min-height: 120px;
 
 }
-
+.order_submit,.manage_submit,.add_submit,.delete_submit{
+    position: fixed;
+    margin-top:200px;
+    width:60px;
+    height:60px;
+    border-radius:100px;
+}
 .footer{
     text-align: center;
+}
+.exit_manage{
+    position: fixed;
+    margin-top:200px;
+    width:60px;
+    height:60px;
+    border-radius:100px;
 }

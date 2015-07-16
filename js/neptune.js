@@ -3,6 +3,10 @@
  */
 $(document).ready(function(){
 
+    $(".logo").click(function(){
+        $(".content").load("menu.php");
+    })
+
     $(".navbar-nav li").on("click",function(){
 
         $(".navbar-nav li").removeClass("active");
@@ -15,7 +19,7 @@ $(document).ready(function(){
             case "show-logout":$("#empty").load("lyy-test/func-logout.php",
                 {},
                 function(data,status){
-                    alert(data);
+                     alert(data);
                     window.location.reload();
                 });break;
         }
@@ -44,7 +48,7 @@ $(document).ready(function(){
                 });
         }
         else {
-            alert("ÊäÈëÎª¿Õ");
+            alert("ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½");
         }
     });
 

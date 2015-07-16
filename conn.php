@@ -1,5 +1,5 @@
 <?php
-header("content_type:text/html; charset = utf_8");
+//header("content_type:text/html; charset = utf_8");
 /**
  * Created by PhpStorm.
  * User: yyli

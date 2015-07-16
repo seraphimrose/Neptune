@@ -73,10 +73,12 @@ nav li{
     font-size: 10px;
     color: gray;
 }
-
-.tc-input {
-    min-height: 120px;
-
+.tc-submit {
+    position: absolute;
+    margin-top:40px;
+    width:80px;
+    height:80px;
+    border-radius:100px;
 }
 .order_submit,.manage_submit,.add_submit,.delete_submit{
     position: fixed;
@@ -85,6 +87,11 @@ nav li{
     height:60px;
     border-radius:100px;
 }
+.tc-input {
+    min-height: 120px;
+
+}
+
 .footer{
     text-align: center;
 }

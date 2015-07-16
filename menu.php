@@ -26,12 +26,14 @@
 //        var dish_id=1;
         $(".order_submit").click(function(){
             var dish_id=$("input:checked").parents(".menu_items").attr("id");
-//            alert(dish_id);
             $.post("lyy-test/func-order.php",{
                 dish_id:dish_id
             },function(data,status){
                 alert(data);
-                $(".content").load("orderFinish.php");
+	            if(data=="点餐成功")
+		            $(".content").load("orderFinish.php",{
+			            dish_id:dish_id
+		            });
             });
         });
         $(".comment_submit").click(function(){

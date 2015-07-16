@@ -35,6 +35,7 @@ session_start();
         }
 ?>
     </script>
+
 </head>
 <body>
 
@@ -46,7 +47,7 @@ session_start();
                 <!--                    <a class="navbar-brand" href="#"><img class="logo" src="src/baixingLOGO.png"/> </a>-->
                 <a href="#"><img class="logo" src="src/baixingLOGO.png"/></a>
             </div>
-
+            <div name="ekko"></div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active" id="menu"><a href="#">点餐</span></a></li>

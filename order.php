@@ -1,12 +1,13 @@
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" href="css/neptune.css"/>
 <style>
-    td{
+    td {
         text-align: center;
     }
 </style>
 <div class="menu_title">
-    <h1 style="text-align: center;color:red">统计</h1><hr/>
+    <h1 style="text-align: center;color:red">统计</h1>
+    <hr/>
 </div>
 <div class="row">
     <div class="col-md-2"></div>

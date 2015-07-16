@@ -53,10 +53,11 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <?php
-            try {
-                $dbh = new PDO('mysql:host=localhost;dbname=neptune', "root", "");
-                $dbh->query("set names   utf8");
-                foreach ($dbh->query('SELECT * from menu where flag = 0') as $tmp) {
+            include "conn.php";
+                foreach ($dbh->query('SELECT menu.id,menu.dishname,menu.picture,menu.description,COUNT(today_order.user_id) as num
+				FROM menu,today_order
+				WHERE menu.id=today_order.dish_id AND menu.flag=0
+				GROUP BY menu.id') as $tmp) {
                     ?>
                     <div class="table-bordered menu_items" id="<?php echo $tmp[0] ?>">
                         <input class="sr-only" type="radio" name="menu" value="option"/>
@@ -76,11 +77,10 @@
                             </div>
                             <div class="col-md-7">
                                 <h4><?php echo $tmp[1] ?></h4><br/>
-
-                                <p><?php echo $tmp[4] ?></p>
+                                <p><?php echo $tmp[3] ?></p>
                             </div>
                             <div class="col-md-1">
-                                <div class="badge" style="margin-top: 20px;">12人</div>
+                                <div class="badge" style="margin-top: 20px;"><?php echo $tmp[4] ?>人</div>
                                 <button class="btn btn-primary comment" type="button">
                                     <span class="glyphicon glyphicon-comment"></span>
                                 </button>
@@ -132,10 +132,6 @@
                     <?php
                 }
                 $dbh = null;
-            } catch (PDOException $e) {
-                print "Error!: " . $e->getMessage();
-                die();
-            }
             ?>
         </div>
         <div class="col-md-2">

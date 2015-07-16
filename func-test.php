@@ -8,7 +8,7 @@
 
             id = $("[name='id']").val();
 
-            $.post("fetchComment.php",
+            $.post("orderFinish.php",
                 {
                     dish_id: id,
                 },

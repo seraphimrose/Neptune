@@ -56,7 +56,13 @@ nav li{
     word-spacing: 5px;
 }
 
-.tc-usr, .tc-content {
+.tc-usr {
+    margin: 15px;
+    font-size: 15px;
+    color: red;
+}
+
+.tc-content {
     margin: 15px;
     font-size: 15px;
     color: black;
@@ -75,4 +81,20 @@ nav li{
 
 .footer{
     text-align: center;
+}
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+hr.style-six {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer {
+    background: rgb(245,245,245);
 }

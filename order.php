@@ -57,7 +57,7 @@
                     $roomNo = $room[0];
                     $dishCnt = count($room) - 1;
                     echo '<tr>
-                    <td style="padding-top:5%;font-size: 24px" rowspan='.$dishCnt.'><b>'.$roomNo.'</b></td>
+                    <td style="text-align:center" rowspan='.$dishCnt.'><b>'.$roomNo.'</b></td>
                     <td>'.$room[1][0].'</td>
                     <td>'.$room[1][1].'</td>
                     </tr>';

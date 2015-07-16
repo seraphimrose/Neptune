@@ -1,6 +1,6 @@
 <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 
-<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
 
 <script type="application/javascript">
     $(document).ready(function(){

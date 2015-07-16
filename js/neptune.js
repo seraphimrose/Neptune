@@ -18,10 +18,10 @@ $(document).ready(function () {
                 $(".content").load("order.php");
                 break;
             case "comment":
-                $(".content").load("lyy-test/comment.php");
+                $(".content").load("comment.php");
                 break;
             case "show-logout":
-                $("#empty").load("lyy-test/func-logout.php",
+                $("#empty").load("func-logout.php",
                     {},
                     function (data, status) {
                         alert(data);
@@ -41,7 +41,7 @@ $(document).ready(function () {
         password = $("[name='password']").val();
 
         if (id.length > 0 && password.length > 0) {
-            $.post("lyy-test/func-login.php",
+            $.post("func-login.php",
                 {
                     id: id,
                     password: password

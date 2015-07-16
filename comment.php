@@ -9,13 +9,13 @@
                     tc = otc.replace(/\n/g,"<br/>");
 
                     if(tc.length > 5) {
-                        $.post("lyy-test/func-tucao.php",
+                        $.post("func-tucao.php",
                             {
                                 tc: tc
                             },
                             function (data, status) {
                                 alert(data);
-                                $(".content").load("lyy-test/comment.php");
+                                $(".content").load("comment.php");
                             });
                     }
                     else {
@@ -35,10 +35,22 @@
 
     <div class="col-md-2"></div>
     <div class="col-md-8">
+        <div class="menu_items">
+            <div class="row">
+                <div class="col-md-12"><textarea class="form-control tc-input" name="new-tc" type="text" style="resize:none;"/></div>
+            </div>
+            <div class="row"><p></p></div>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row"><p></p></div>
+        </div>
         <?php
         include("connect-db.php");
 
-        foreach ($dbh->query("SELECT username, content, time FROM `tucao` join `user` WHERE `tucao`.user_id = `user`.id") as $row) {
+        foreach ($dbh->query("SELECT username, content, time FROM `tucao` join `user` WHERE `tucao`.user_id = `user`.id ORDER BY time DESC") as $row) {
             echo '<div class="tc menu_items table-bordered">
             <div class="row">
                 <div class="col-md-9"><p class="tc-usr" style="display: inline;">'.$row["username"].'</p></div>
@@ -53,19 +65,7 @@
         }
         ?>
 
-        <div class="menu_items">
-            <div class="row">
-                <div class="col-md-12"><textarea class="form-control tc-input" name="new-tc" type="text" style="resize:none;"/></div>
-            </div>
-            <div class="row"><p></p></div>
-            <div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-2"><button type="submit" class="btn btn-primary tc-submit">吐了个槽</button></div>
-                <div class="col-md-5"></div>
-            </div>
-            <div class="row"><p></p></div>
-        </div>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-2"><button type="submit" class="btn btn-primary tc-submit">吐了个槽</button></div>
 
 </div>

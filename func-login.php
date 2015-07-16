@@ -6,7 +6,7 @@
  * Date: 2015/7/14
  * Time: 11:15
  */
-include("connect-db.php");
+include("conn.php");
 
 
 if(isset($_SESSION['user_id'])) {

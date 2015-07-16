@@ -6,7 +6,7 @@
  * Time: 9:32
  */
 
-include("connect-db.php");
+include("conn.php");
 session_start();
 
 include_once("func-check-login.php");

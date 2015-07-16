@@ -37,7 +37,7 @@
         });
         $(".order_submit").click(function(){
             var dish_id = $("input:checked").parents(".menu_items").attr("id");
-            $.post("lyy-test/func-order.php", {
+            $.post("func-order.php", {
                 dish_id:dish_id
             },function(data,status){
                 $(".content").load("orderFinish.php");
@@ -53,6 +53,7 @@
                     dish_id: dish_id,
                     content: content
                 }, function (data, status) {
+                    alert(data);
                     show_cmt(dish_id);
                 })
             }

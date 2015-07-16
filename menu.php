@@ -8,6 +8,7 @@
             })
     }
     $(document).ready(function () {
+        $("a,input,button").focus(function(){this.blur()});
         $(".menu_items").on("click", function () {
             $(this).css("background-color", "#FFCC99").find("input[name='menu']").attr("checked", "checked");
             $(this).find(".glyphicon-ok").removeClass("hide");
@@ -82,8 +83,41 @@
             }
             state=!state;
         });
-        $(".add_submit").click(function(){
+        $(".add_submit").popover(
+            {
+                title:'添加菜单',
+                trigger:'click',
+                content:
+                ' <div class="form-group"><label> 名称 </label> <input class="form-control" type="text" name="dishname/></div><div class="form-group"><label> 图片 </label></div><div class="form-group"><input class="form-control" type="file" name="picture"/></div><label> 描述 </label><textarea class="form-control" name="description"></textarea></div><div class="form-group" style="text-align:center;margin-top:10px;"><button class="btn btn-warning menu_submit" style="margin-right:15px;">提交</button><button class="btn btn-default close_popover">取消</button></div>',
+//                ' <div class="form-group">' +
+//                    '    <label> 名称 </label>' +
+//                '    <input class="form-control" type="text" name="dishname/>' +
+//                '</div> ' +
+//                '<div class="form-group">' +
+//                '     <label> 图片(网址URL) </label>' +
+//                '     <input class="form-control" type="text" name="picture"/>' +
+//                '</div>' +
+//                '<div class="form-group">' +
+//                '    <label> 描述 </label>' +
+//                '    <textarea class="form-control" name="description"></textarea>' +
+//                '</div>' +
+//                '<div class="form-group" style="text-align:center">' +
+//                '    <button class="btn btn-warning menu_submit" style="margin-right:15px;">提交</button>' +
+//                '    <button class="btn btn-default close_popover">取消</button>' +
+//                '</div> ',
+                html: true,
+                placement:'left'
+            }
+        );
+        $(".menu_submit").click(function(){
+            alert("test");
         });
+
+        $(".close_popover").click(function(){
+           alert("test");
+        });
+
+
         $(".delete_submit").click(function(){
             var dish_id=$("input:checked").parents(".menu_items").attr("id");
             if(confirm("确认删除？")) {
@@ -97,7 +131,7 @@
     });
 </script>
 <div class="menu_title">
-    <h1 style="text-align: center;color:#000033">今日菜单</h1>
+    <h1 style="text-align: center;color: #000033;">今日菜单</h1>
     <hr/>
 </div>
 <div class="row">

@@ -175,20 +175,17 @@ session_start();
             desc = $("[name='description']").val();
 
             if (dishname.length > 0 && desc.length > 0 && fname.length > 0) {
-                alert(dishname);
-                alert(desc);
-                alert(fname);
                 $.post("addmenu.php",{
-                dishname:dishname,
-                picture:fname,
-                desc:desc
-            },function(data,status){
-                alert(data);
-                $(".content").load("menu.php");
-            });
+                    dishname:dishname,
+                    picture:fname,
+                    desc:desc
+                },function(){
 
-            }
-            else {
+                    $(".content").load("menu.php");
+
+                });
+
+            }else {
                 alert("输入为空");
             }
 

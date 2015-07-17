@@ -51,6 +51,17 @@ session_start();
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active" id="menu"><a href="#">点餐</span></a></li>
+                    <?php
+
+                    if(isset($_SESSION['username'])){
+
+                        echo'
+                            <li id="myOrder"><a href="#">订单</a></li>
+                        ';
+                    }
+
+
+                    ?>
                 <?php
                 if( isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
                     echo '
@@ -71,9 +82,9 @@ session_start();
 
 
     </div>
-    <div class="footer navbar-fixed-bottom">
-        <p>I am a footer</p>
-    </div>
+<!--    <div class="footer navbar-fixed-bottom">-->
+<!--        <p>I am a footer</p>-->
+<!--    </div>-->
     <div id="empty" style="display: none"></div>
 </div>
 

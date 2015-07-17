@@ -6,15 +6,12 @@
     }
 </style>
 <div class="menu_title">
-    <h1 style="text-align: center;color:red">统计</h1>
+    <h1 style="text-align: center;color:#000033">统计</h1>
     <hr/>
 </div>
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-
-        <div class="row">
-
             <table class="table table-striped table-hover table-bordered">
                 <h3 style="text-align: center;color: black">按菜名统计</h3><hr/>
                 <tr>
@@ -33,9 +30,6 @@
                 }
                 ?>
             </table>
-        </div>
-
-        <div class="row">
 
             <table class="table table-striped table-hover table-bordered">
                 <h3 style="text-align:center;color:black">按楼层统计</h3><hr/>
@@ -72,11 +66,7 @@
                 }
                 ?>
             </table>
-        </div>
 
-
-
-        <div class="row">
             <table class="table table-striped table-hover table-bordered">
                 <h3 style="text-align: center;color:black">订餐详情</h3><hr/>
                 <tr>
@@ -98,8 +88,5 @@
                 }
                 ?>
             </table>
-        </div>
 
-    </div>
-    <div class="col-md-2"></div>
 </div>

@@ -21,6 +21,9 @@ $(document).ready(function () {
             case "list":
                 $(".content").load("order.php");
                 break;
+            case "myOrder":
+                $(".content").load("myOrder.php");
+                break;
             case "comment":
                 $(".content").load("comment.php");
                 break;

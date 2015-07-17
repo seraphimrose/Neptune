@@ -126,9 +126,9 @@
         <div class="col-md-8">
             <?php
             include("conn.php");
-            foreach ($dbh->query('SELECT menu.id,menu.dishname,menu.picture,menu.description,COUNT(today_order.user_id) as num
+            foreach ($dbh->query('SELECT menu.id,menu.dishname,menu.picture,menu.description,COUNT(today_order.user_id)
 				FROM menu,today_order
-				WHERE menu.id=today_order.dish_id AND menu.flag=0
+				WHERE menu.flag=0
 				GROUP BY menu.id') as $tmp) {
                 ?>
                 <div class="table-bordered menu_items" id="<?php echo $tmp[0] ?>">

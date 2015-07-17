@@ -118,3 +118,5 @@ hr.style-six {
 .footer {
     background: rgb(245,245,245);
 }
+html {overflow:-moz-scrollbars-vertical;}
+html {min-height:101%;}

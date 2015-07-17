@@ -1,9 +1,6 @@
 body,html{
     font-family:'Microsoft YaHei','Hiragino Sans GB',Helvetica,Arial,'Lucida Grande',sans-serif;
 }
-button{
-    filter:chroma(color=#000000);;
-}
 .logo{
     height:50px;
     width:auto;

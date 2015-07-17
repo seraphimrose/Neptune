@@ -34,10 +34,11 @@
             var dish_id = $("input:checked").parents(".menu_items").attr("id");
             $.post("func-order.php", {dish_id: dish_id},
                 function (data, status) {
-                    $.post("orderFinish.php", {dish_id: dish_id},
-                        function (data, status) {
-                            $(".content").html(data);
-                        });
+	                if(data=="点餐成功")
+                        $.post("orderFinish.php", {dish_id: dish_id},
+                            function (data, status) {
+                                $(".content").html(data);
+                            });
                 });
         });
         $(".comment_submit").click(function () {
@@ -140,7 +141,10 @@
         <div class="col-md-8">
             <?php
             include("conn.php");
-            foreach ($dbh->query('SELECT * from menu where flag = 0') as $tmp) {
+            foreach ($dbh->query('SELECT menu.id,menu.dishname,menu.picture,menu.description,COUNT(today_order.user_id) as num
+				FROM menu,today_order
+				WHERE menu.id=today_order.dish_id AND menu.flag=0
+				GROUP BY menu.id') as $tmp) {
                 ?>
                 <div class="table-bordered menu_items" id="<?php echo $tmp[0] ?>">
                     <input class="sr-only" type="radio" name="menu" value="option"/>
@@ -162,10 +166,10 @@
                         <div class="col-md-7">
                             <h4><?php echo $tmp[1] ?></h4><br/>
 
-                            <p><?php echo $tmp[4] ?></p>
+                            <p><?php echo $tmp[3] ?></p>
                         </div>
                         <div class="col-md-1">
-                            <div class="badge" style="margin-top: 20px;">12人</div>
+                            <div class="badge" style="margin-top: 20px;"><?php echo $tmp[4] ?>人</div>
                             <button class="btn btn-primary comment" type="button">
                                 <span class="glyphicon glyphicon-comment"></span>
                             </button>

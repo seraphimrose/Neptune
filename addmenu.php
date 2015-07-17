@@ -7,10 +7,9 @@
  */
 header("Content-Type: text/html;charset=utf-8");
 include "conn.php";
-$name = "测试阿";
-$picture = "jpg/6.jpg";
-$desc = "b就是试试";
-
+$name = $_POST['dishname'];
+$picture = $_POST['picture'];
+$desc = $_POST['desc'];
 $status = null;
 $insrt = "INSERT INTO menu(id, dishname, picture, flag,description) VALUES (null,'$name','$picture',0,'$desc')";
 $res = $dbh->query($insrt);

@@ -74,39 +74,29 @@ session_start();
 </div>
 
 <!--login modal-->
-<div class="modal fade" id="loginModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-
-
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">登录</h4>
+    <div class="modal fade" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">登录</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>账号</label>
+                        <input class="form-control" name="id" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input class="form-control" name="password" type="password"/>
+                    </div>
+                    <div style="text-align: center">
+                        <button type="submit" class="btn btn-primary login-submit">登录</button>
+                    </div>
+                </div>
             </div>
-
-
-
-
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <label>账号</label>
-                    <input class="form-control" name="id" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label>密码</label>
-                    <input class="form-control" name="password" type="password"/>
-                </div>
-                <div style="text-align: center">
-                    <button type="submit" class="btn btn-primary login-submit">登录</button>
-                </div>
-
-            </div>
-
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

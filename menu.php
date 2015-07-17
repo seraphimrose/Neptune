@@ -8,7 +8,7 @@
             })
     }
     $(document).ready(function () {
-        $("a,input,button").focus(function(){this.blur()});
+        $("button").focus(function(){this.blur()});
         $(".menu_items").on("click", function () {
             $(this).css("background-color", "#FFCC99").find("input[name='menu']").attr("checked", "checked");
             $(this).find(".glyphicon-ok").removeClass("hide");
@@ -84,38 +84,23 @@
             }
             state=!state;
         });
-        $(".add_submit").popover(
-            {
-                title:'添加菜单',
-                trigger:'click',
-                content:
-                ' <div class="form-group"><label> 名称 </label> <input class="form-control" type="text" name="dishname/></div><div class="form-group"><label> 图片 </label></div><div class="form-group"><input class="form-control" type="file" name="picture"/></div><label> 描述 </label><textarea class="form-control" name="description"></textarea></div><div class="form-group" style="text-align:center;margin-top:10px;"><button class="btn btn-warning menu_submit" style="margin-right:15px;">提交</button><button class="btn btn-default close_popover">取消</button></div>',
-//                ' <div class="form-group">' +
-//                    '    <label> 名称 </label>' +
-//                '    <input class="form-control" type="text" name="dishname/>' +
-//                '</div> ' +
-//                '<div class="form-group">' +
-//                '     <label> 图片(网址URL) </label>' +
-//                '     <input class="form-control" type="text" name="picture"/>' +
-//                '</div>' +
-//                '<div class="form-group">' +
-//                '    <label> 描述 </label>' +
-//                '    <textarea class="form-control" name="description"></textarea>' +
-//                '</div>' +
-//                '<div class="form-group" style="text-align:center">' +
-//                '    <button class="btn btn-warning menu_submit" style="margin-right:15px;">提交</button>' +
-//                '    <button class="btn btn-default close_popover">取消</button>' +
-//                '</div> ',
-                html: true,
-                placement:'left'
-            }
-        );
+        $(".add_submit").click(function(){
+            $("#addModal").modal("show");
+        });
         $(".menu_submit").click(function(){
-            alert("test");
+            $.post("addmenu.php",{
+                dishname:dishname,
+                picture:picture,
+                description:description
+            },function(data,status){
+                alert(data);
+                alert(status)
+                $(".content").load("menu.php");
+            });
         });
 
         $(".close_popover").click(function(){
-           alert("test");
+            $("#addModal").modal("hide");
         });
 
 
@@ -212,4 +197,32 @@
 
         </div>
     </form>
+</div>
+
+<div class="modal fade" id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加菜单</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label> 名称 </label>
+                    <input class="form-control" type="text" name="dishname"/>
+                </div>
+                <div class="form-group">
+                    <label> 图片 </label>
+                    <input class="form-control" type="file" name="picture"/></div>
+                <div class="form-group">
+                    <label> 描述 </label>
+                    <textarea class="form-control" name="description"></textarea>
+                </div>
+                <div class="form-group" style="text-align:center;margin-top:10px;">
+                    <button class="btn btn-warning menu_submit" style="margin-right:15px;">提交</button>
+                    <button class="btn btn-default close_popover">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

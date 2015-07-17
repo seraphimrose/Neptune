@@ -58,7 +58,7 @@ $(document).ready(function () {
                 });
         }
         else {
-            alert("����Ϊ��");
+            alert("输入为空");
         }
     });
 

@@ -1,9 +1,6 @@
 body,html{
     font-family:'Microsoft YaHei','Hiragino Sans GB',Helvetica,Arial,'Lucida Grande',sans-serif;
 }
-button{
-    filter:chroma(color=#000000);;
-}
 .logo{
     height:50px;
     width:auto;
@@ -121,3 +118,5 @@ hr.style-six {
 .footer {
     background: rgb(245,245,245);
 }
+html {overflow:-moz-scrollbars-vertical;}
+html {min-height:101%;}

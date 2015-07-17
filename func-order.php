@@ -14,7 +14,7 @@ include_once("func-check-login.php");
 if( $login ) {
     $usr_id = $_SESSION['user_id'];
     $dish_id = $_POST['dish_id'];
-    $stmt = $dbh->prepare("INSERT INTO `neptune`.`today_order` (`id`, `user_id`, `dish_id`, `time`, `reserve`) VALUES (NULL, ?, ?, NOW(), '0');");
+    $stmt = $dbh->prepare("INSERT INTO `neptune`.`today_order` (`id`, `user_id`, `dish_id`, `time`) VALUES (NULL, ?, ?, NOW());");
     $ret = $stmt->execute(array($usr_id, $dish_id));
 
     if ($ret === false) {

@@ -23,6 +23,9 @@ if( $login ) {
         echo "点餐成功";
     }
 }
+else {
+    echo "点餐失败";
+}
 
 
 

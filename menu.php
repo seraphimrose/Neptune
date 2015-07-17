@@ -8,7 +8,7 @@
             })
     }
     $(document).ready(function () {
-        $("a,input,button").focus(function(){this.blur()});
+        $("a,button").focus(function(){this.blur()});
         $(".menu_items").on("click", function () {
             $(this).css("background-color", "#FFCC99").find("input[name='menu']").attr("checked", "checked");
             $(this).find(".glyphicon-ok").removeClass("hide");

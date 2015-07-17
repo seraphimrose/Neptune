@@ -14,7 +14,6 @@ if( $login ) {
     $order_id = $_POST['order_id'];
 
     $ret = $dbh->exec("DELETE FROM `neptune`.`today_order` WHERE `today_order`.`id` = $order_id");
-    echo $ret;
     if ($ret != 1) {
         echo "取消订单失败";
     } else {

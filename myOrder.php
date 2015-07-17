@@ -1,3 +1,34 @@
+<?php
+session_start();
+?>
+
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/neptune.css"/>
+
+<head>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("button.btn-dlt").click(
+                function(){
+
+                    order_id = $(this).attr("id");
+                    if( order_id > 0) {
+                        $.post("func-cancel-order.php",
+                            {
+                                order_id: order_id
+                            },
+                            function (data, status) {
+                                alert(data);
+                                $(".content").load("myOrder.php");
+                            });
+                    }
+                });
+        });
+
+    </script>
+</head>
+
 <style>
     .container_m{
         width:50%;
@@ -19,51 +50,56 @@
         <h1 style="text-align: center;color:#000033">我的订单</h1>
         <hr/>
     </div>
-    <div class="container_m" >
-        <div class="panel panel-default">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
 
-            <div class="panel-heading">
-                今日订单
+                <table class="table table-striped table-hover table-bordered">
+                    <h3 style="text-align: center;color: black">今日订单</h3><hr/>
+                    <tr>
+                        <td><b>时间</b></td>
+                        <td><b>菜名</b></td>
+                        <td><b>取消</b></td>
+                    </tr>
+                    <?php
+                    include("conn.php");
+                    foreach ($dbh->query("SELECT * FROM order_with_info where user_id = $_SESSION[user_id] order by time desc") as $row) {
+                        echo '
+                    <tr>
+                    <td>'.$row['time'].'</td>
+                    <td>'.$row['dishname'].'</td>
+                    <td><button id='.$row['order_id'].' class="btn btn-danger btn-sm btn-dlt"> <span class="glyphicon glyphicon-remove"></span> 取消</button></td>
+                    </tr>
+                    ';
+                    }
+                    ?>
+                </table>
             </div>
-            <div class="panel-body">
-                <?php
-                    include "conn.php";
+            <div class="row">
 
-
-                ?>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>青椒肉丝饭</p>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> 取消</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>蚝油牛肉饭</p>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> 取消</button>
-                    </div>
-                </div>
+                <table class="table table-striped table-hover table-bordered">
+                    <h3 style="text-align: center;color: black">历史订单</h3><hr/>
+                    <tr>
+                        <td><b>时间</b></td>
+                        <td><b>菜名</b></td>
+                    </tr>
+                    <?php
+                    include("conn.php");
+                    foreach ($dbh->query("SELECT * FROM histort_order_with_info where user_id = $_SESSION[user_id] order by time desc") as $row) {
+                        echo '
+                    <tr>
+                    <td>'.$row['time'].'</td>
+                    <td>'.$row['dishname'].'</td>
+                    </tr>
+                    ';
+                    }
+                    ?>
+                </table>
             </div>
         </div>
-        <div style="height:80px;"></div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                历史订单
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>2015-07-17</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p>青椒肉丝饭</p>
-                    </div>
-                </div>
+        <div class="col-md-2"></div>
 
-            </div>
-        </div>
+
+    </div>
 </div>

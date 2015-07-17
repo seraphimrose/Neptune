@@ -51,7 +51,11 @@ session_start();
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active" id="menu"><a href="#">点餐</span></a></li>
-                    <li id="list"><a href="#">统计</a></li>
+                <?php
+                if( isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+                    echo '
+                    <li id="list"><a href="#">统计</a></li>';
+                }?>
                     <li id="comment"><a href="#">吐槽</a></li>
                 </ul>
                 <ul class="nav navbar-nav login">

@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>
 <script>
     function show_cmt(dish_id) {
         $.post("fetchComment.php", {dish_id: dish_id},
@@ -7,7 +11,75 @@
                 $("#" + dish_id).next(".collapse").find(".comment-content").html(data);
             })
     }
+
     $(document).ready(function () {
+        var fname = null;
+        var interval;
+
+        function applyAjaxFileUpload(element) {
+            $(element).AjaxFileUpload({
+                action: "func-upload.php",
+
+                onChange: function(filename) {
+                    var $span = $("<span />")
+                        .attr("class", $(this).attr("id"))
+                        .text("Uploading")
+                        .insertAfter($(this));
+
+                    $(this).remove();
+
+                    interval = window.setInterval(function() {
+                        var text = $span.text();
+                        if (text.length < 13) {
+                            $span.text(text + ".");
+                        } else {
+                            $span.text("Uploading");
+                        }
+                    }, 200);
+                },
+                onSubmit: function(filename) {
+                    return true;
+                },
+                onComplete: function(filename, response) {
+                    fname = response['name'];
+                    window.clearInterval(interval);
+                    var $span = $("span." + $(this).attr("id")).text(filename + " "),
+                        $fileInput = $("<input />")
+                            .attr({
+                                type: "file",
+                                name: $(this).attr("name"),
+                                id: $(this).attr("id")
+                            });
+
+                    if (typeof(response.error) === "string") {
+                        $span.replaceWith($fileInput);
+
+                        applyAjaxFileUpload($fileInput);
+
+                        alert(response.error);
+
+                        return;
+                    }
+
+                    $("<a />")
+                        .attr("href", "#")
+                        .text("x")
+                        .bind("click", function(e) {
+                            $span.replaceWith($fileInput);
+
+                            applyAjaxFileUpload($fileInput);
+                        })
+                        .appendTo($span);
+                }
+            });
+        }
+
+
+        applyAjaxFileUpload("#demo1");
+
+
+
+
         $("button").focus(function(){this.blur()});
         $(".menu_items").on("click", function () {
             $(this).css("background-color", "#FFCC99").find("input[name='menu']").attr("checked", "checked");
@@ -32,14 +104,24 @@
         });
         $(".order_submit").click(function() {
             var dish_id = $("input:checked").parents(".menu_items").attr("id");
-            $.post("func-order.php", {dish_id: dish_id},
-                function (data, status) {
-	                if(data=="点餐成功")
-                        $.post("orderFinish.php", {dish_id: dish_id},
-                            function (data, status) {
-                                $(".content").html(data);
-                            });
-                });
+            if( !dish_id ) {
+                alert("你还没有点餐噢噢噢噢~");
+            }
+            else {
+                $.post("func-order.php", {dish_id: dish_id},
+                    function (data, status) {
+                        if(data=="点餐成功") {
+                            $.post("orderFinish.php", {dish_id: dish_id},
+                                function (data, status) {
+                                    $(".content").html(data);
+                                });
+                        }
+                        else {
+                            alert(data);
+                        }
+                    });
+            }
+
         });
         $(".comment_submit").click(function () {
             var dish_id = $(this).parents(".collapse").prev(".menu_items").attr("id");
@@ -87,16 +169,38 @@
         $(".add_submit").click(function(){
             $("#addModal").modal("show");
         });
+
         $(".menu_submit").click(function(){
-            $.post("addmenu.php",{
+            dishname = $("[name='dishname']").val();
+            desc = $("[name='description']").val();
+
+            if (dishname.length > 0 && desc.length > 0 && fname.length > 0) {
+                alert(dishname);
+                alert(desc);
+                alert(fname);
+                $.post("addmenu.php",{
                 dishname:dishname,
-                picture:picture,
-                description:description
+                picture:fname,
+                desc:desc
             },function(data,status){
                 alert(data);
-                alert(status)
                 $(".content").load("menu.php");
             });
+
+            }
+            else {
+                alert("输入为空");
+            }
+
+//            $.post("addmenu.php",{
+//                dishname:dishname,
+//                picture:picture,
+//                description:description
+//            },function(data,status){
+//                alert(data);
+//                alert(status)
+//                $(".content").load("menu.php");
+//            });
         });
 
         $(".close_popover").click(function(){
@@ -106,12 +210,17 @@
 
         $(".delete_submit").click(function(){
             var dish_id=$("input:checked").parents(".menu_items").attr("id");
-            if(confirm("确认删除？")) {
-                $.post("delmenu.php", {
-                    dish_id: dish_id
-                }, function (data, status) {
-                    $(".content").load("menu.php");
-                });
+            if( !dish_id ) {
+                alert("你还没有选择噢噢噢噢~");
+            }
+            else {
+                if (confirm("确认删除？")) {
+                    $.post("delmenu.php", {
+                        dish_id: dish_id
+                    }, function (data, status) {
+                        $(".content").load("menu.php");
+                    });
+                }
             };
         });
     });
@@ -126,10 +235,7 @@
         <div class="col-md-8">
             <?php
             include("conn.php");
-            foreach ($dbh->query('SELECT menu.id,menu.dishname,menu.picture,menu.description,COUNT(today_order.user_id) as num
-				FROM menu,today_order
-				WHERE menu.id=today_order.dish_id AND menu.flag=0
-				GROUP BY menu.id') as $tmp) {
+            foreach ($dbh->query('SELECT menu.id,menu.dishname,menu.picture,menu.description,COUNT(today_order.user_id) as num FROM menu left join today_order on menu.id=today_order.dish_id where menu.flag=0 GROUP BY menu.id') as $tmp) {
                 ?>
                 <div class="table-bordered menu_items" id="<?php echo $tmp[0] ?>">
                     <input class="sr-only" type="radio" name="menu" value="option"/>
@@ -190,11 +296,19 @@
             ?>
         </div>
         <div class="col-md-2">
-            <button class="btn btn-warning order_submit" type="button">点餐</button>
-            <button class="btn btn-info manage_submit" type="button" style="margin-top:100px">管理</button>
-            <button class="btn btn-success add_submit" type="button" style="margin-top:230px;margin-left:18px;">添加</button>
-            <button class="btn btn-danger delete_submit" type="button" style="margin-top:310px;margin-left:18px;">删除</button>
 
+
+            <button class="btn btn-warning order_submit" type="button">点餐</button>
+            <?php
+            if( isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+                echo '
+                <button class="btn btn-info manage_submit" type="button" style="margin-top:100px">管理</button>
+                <button class="btn btn-success add_submit" type="button" style="margin-top:230px;margin-left:18px;">添加</button>
+                <button class="btn btn-danger delete_submit" type="button" style="margin-top:310px;margin-left:18px;">删除</button>
+
+                ';
+            }
+            ?>
         </div>
     </form>
 </div>
@@ -213,7 +327,7 @@
                 </div>
                 <div class="form-group">
                     <label> 图片 </label>
-                    <input class="form-control" type="file" name="picture"/></div>
+                    <input class="form-control" type="file" name="file" id="demo1"/></div>
                 <div class="form-group">
                     <label> 描述 </label>
                     <textarea class="form-control" name="description"></textarea>

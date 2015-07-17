@@ -3,6 +3,7 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
+            $("button").focus(function(){this.blur()});
             $("button.tc-submit").click(
                 function(){
                     otc = $("[name='new-tc']").val();

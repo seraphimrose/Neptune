@@ -5,12 +5,12 @@
  * Date: 2015/7/14
  * Time: 10:40
  */
-session_start();
+
 include("conn.php");
 include("func-check-login.php");
 if($login) {
     if(!$_SESSION['isAdmin']) {
-        echo "权限不足";
+        echo 'alert("权限不足");';
     }
     else {
         $orders = $dbh->query("SELECT * FROM `today_order`");
@@ -23,6 +23,6 @@ if($login) {
                 $dbh->query("DELETE FROM `today_order` WHERE id = " . $row['id']);
             }
         }
-        echo "操作成功";
+        // echo "操作成功";
     }
 }

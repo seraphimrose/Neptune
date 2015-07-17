@@ -1,17 +1,51 @@
+<?php
+    session_start();
+?>
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" href="css/neptune.css"/>
-<style>
-    td {
-        text-align: center;
-    }
-</style>
+
+<head>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+
+            $(document).ready(function(){
+                $("button").focus(function(){this.blur()});
+                $("button.open-close").click(function() {
+                    if( $(this).text().trim() == "开启订餐" ) {
+                        if(confirm("确认开启订餐?")) {
+                            $("div#open-close").load("func-open-close.php");
+                            $("div.content").load("order.php");
+                        }
+                    }
+                    else if ( $(this).text().trim() == "关闭订餐" ){
+                        if(confirm("确认关闭订餐并清空今日订单?")) {
+                            $("div#open-close").load("func-open-close.php");
+                            $("div.content").load("order.php");
+                        }
+                    }
+
+                    });
+            });
+
+
+
+    </script>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
 <div class="menu_title">
-    <h1 style="text-align: center;color:#000033">统计</h1>
+    <h1 style="text-align: center;color:red">统计</h1>
     <hr/>
 </div>
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
+
+        <div class="row">
+
             <table class="table table-striped table-hover table-bordered">
                 <h3 style="text-align: center;color: black">按菜名统计</h3><hr/>
                 <tr>
@@ -30,6 +64,9 @@
                 }
                 ?>
             </table>
+        </div>
+
+        <div class="row">
 
             <table class="table table-striped table-hover table-bordered">
                 <h3 style="text-align:center;color:black">按楼层统计</h3><hr/>
@@ -66,9 +103,11 @@
                 }
                 ?>
             </table>
+        </div>
 
+        <div class="row">
             <table class="table table-striped table-hover table-bordered">
-                <h3 style="text-align: center;color:black">订餐详情</h3><hr/>
+                <h3 style="text-align: center;color:black">今日订餐详情</h3><hr/>
                 <tr>
                     <td><b>订餐时间</b></td>
                     <td><b>用户名</b></td>
@@ -88,5 +127,46 @@
                 }
                 ?>
             </table>
+        </div>
 
+        <div class="row">
+            <table class="table table-striped table-hover table-bordered">
+                <h3 style="text-align: center;color:black">历史订餐详情</h3><hr/>
+                <tr>
+                    <td><b>订餐时间</b></td>
+                    <td><b>用户名</b></td>
+                    <td><b>楼层</b></td>
+                    <td><b>菜名</b></td>
+                </tr>
+                <?php
+                foreach ($dbh->query("SELECT * FROM `histort_order_with_info` ORDER BY time DESC") as $row) {
+                    echo '
+                    <tr>
+                    <td>'.$row['time'].'</td>
+                    <td>'.$row['username'].'</td>
+                    <td>'.$row['roomNo'].'</td>
+                    <td>'.$row['dishname'].'</td>
+                </tr>
+                    ';
+                }
+                ?>
+            </table>
+        </div>
+
+    </div>
+    <div class="col-md-2"><button class="btn btn-primary open-close">
+            <?php
+
+            include("func-get-state.php");
+            // echo $state;
+            if( $state == 1 ){
+                echo "关闭订餐";
+            }
+            else {
+                echo "开启订餐";
+            }
+            ?>
+
+        </button></div>
+    <div id="open-close"></div>
 </div>

@@ -75,13 +75,22 @@ nav li{
     color: gray;
 }
 .tc-submit {
+     position: absolute;
+     margin-top:40px;
+     width:80px;
+     height:80px;
+     border-radius:100px;
+ }
+
+.open-close {
     position: absolute;
     margin-top:40px;
     width:80px;
     height:80px;
     border-radius:100px;
 }
-.order_submit,.manage_submit,.add_submit,.delete_submit{
+
+.order_submit,.manage_submit,.add_submit,.delete_submit,.order_submit_disable{
     position: fixed;
     margin-top:200px;
     width:60px;

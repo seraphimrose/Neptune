@@ -150,6 +150,7 @@ session_start();
                 manage.animate({height:'100px',width:'100px',fontSize:'20px'},function(){
                     manage.text("退出管理");
                     $(".add_submit").show();
+                    $(".order_submit_disable").hide();
                     $(".delete_submit").show();
                 });
                 order.animate({opacity:'0.1'},function(){
@@ -161,6 +162,7 @@ session_start();
                     order.show();
                     order.animate({opacity:'1.0'});
                     $(".add_submit").hide();
+                    $(".order_submit_disable").show();
                     $(".delete_submit").hide();
                 });
             }
@@ -176,16 +178,15 @@ session_start();
 
             if (dishname.length > 0 && desc.length > 0 && fname.length > 0) {
                 $.post("addmenu.php",{
-                    dishname:dishname,
-                    picture:fname,
-                    desc:desc
-                },function(){
+                dishname:dishname,
+                picture:fname,
+                desc:desc
+            },function(data,status){
+                    window.location.reload();
+            });
 
-                    $(".content").load("menu.php");
-
-                });
-
-            }else {
+            }
+            else {
                 alert("输入为空");
             }
 
@@ -220,6 +221,9 @@ session_start();
                 }
             };
         });
+        $(function(){
+            $("[data-toggle='tooltip']").tooltip();
+        })
     });
 </script>
 <div class="menu_title">
@@ -293,9 +297,19 @@ session_start();
             ?>
         </div>
         <div class="col-md-2">
+            <?php
+            include("func-get-state.php");
+            // echo $state;
+            if( $state == 1 ){
+                echo '<button class="btn btn-warning order_submit" type="button">点餐</button>';
+            }
+            else {
+                echo '<button class="btn btn-warning order_submit_disable"  type="button" data-toggle="tooltip" data-placement="top" title="未到点餐时间">点餐</button>';
+            }
+            ?>
 
 
-            <button class="btn btn-warning order_submit" type="button">点餐</button>
+            
             <?php
             if( isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
                 echo '
